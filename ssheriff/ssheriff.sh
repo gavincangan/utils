@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Args
+# Arguments:
 # [numbers]: select appropriate server and ssh into it
 # help: print help
+# ['update' feature is a work in progress] update <new-SSH-string> <name-of-new-server>
 
 SCRIPT_NAME="$0"
 ARGS="$@"
@@ -21,19 +22,19 @@ print_help() {
     echo "6 Huckleberry"
     echo "7 New River"
     echo "8 Cascades"
-    # end help
+    # end_help
 }
 
 check_upgrade() {
-	[ -f "$NEW_FILE" ] && {
-		echo "Found a new version. Updating myself..."
-    	cp "$NEW_FILE" "$SCRIPT_NAME"
-    	rm -f "$NEW_FILE"
+    [ -f "$NEW_FILE" ] && {
+        echo "Found a new version. Updating myself..."
+        cp "$NEW_FILE" "$SCRIPT_NAME"
+        rm -f "$NEW_FILE"
 
-    	# echo "Running the new version..."
-    	# $SCRIPT_NAME $ARGS
+        # echo "Running the new version..."
+        # $SCRIPT_NAME $ARGS
 
-    	exit 0
+        exit 0
     }
 
     echo "Version $VERSION: already at the latest version."
@@ -58,8 +59,8 @@ update_script(){
     check_upgrade
 }
 
-main()	{
-	echo "SSHer version $VERSION"
+main()    {
+    echo "SSHer version $VERSION"
     case $ARGS in
 
     [0]*)
